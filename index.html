@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="https://static.vidazoo.com/basev/vptm.js"></script>
+    <script type="text/javascript">
+        let settings = {
+            userId: "57b1cfb0f39a2d1100d8969c",
+            playerId: "5b228165ded76a0004ad5a55",
+            auto: false,
+            el: "#some-id",
+            player:{
+                autoPlay:false
+            }
+        };
+
+        (async function () {
+        try {
+          let player = await vdz.create(settings);
+
+          player.on("adPaused", function(adModel) {
+            console.log("Player Paused.");
+          });
+
+          await player.init();
+
+          console.log("Ad will start in 1 minute.")
+          setTimeout(() => {
+            console.log("1 minute passed.");
+            player.start();
+          }, 60000);
+
+        } catch (err) {
+          console.log("Caught an error:", err);
+        }
+      })();
+    </script>
+    <div id="some-id" style="width:500px;height:500px"></div>
+</body>
+</html>
+
+
+
+ 
+
